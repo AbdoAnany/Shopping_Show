@@ -1,12 +1,13 @@
 # Shopping_Show
   <a href="https://play.google.com/store/apps/details?id=com.anany.panda1">
-![Preview](/log.png)
 
 <div style="text-align: center"><table><tr>
   <td style="text-align: center">
   <a href="https://twitter.com/BlueAquilae/status/1049315328835182592">
   
 ![Preview](/google-play-.jpg)
+![Preview](/log.png)
+
   <a href="https://play.google.com/store/apps/details?id=com.anany.panda1">
     <\div>
 ###introduction_screen:

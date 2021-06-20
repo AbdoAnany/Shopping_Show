@@ -10,7 +10,6 @@
 ![Preview](/google-play-.jpg)
 
   <a href="https://play.google.com/store/apps/details?id=com.anany.panda1">
-  <\div>
 
 ###introduction_screen:
 ###firebase_core:

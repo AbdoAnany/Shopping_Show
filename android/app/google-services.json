@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95698998768",
+    "project_id": "pande-cd864",
+    "storage_bucket": "pande-cd864.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95698998768:android:cdf73fcbb4462c91477935",
+        "android_client_info": {
+          "package_name": "com.anany.panda1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95698998768-htkcgs9ao8f337esjls92b82m55qr895.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUkjqIktUtl0WgAngNVJsN0XTNlVXL90A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95698998768-htkcgs9ao8f337esjls92b82m55qr895.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,12 +6,10 @@ import 'package:panda1/size_config.dart';
 
 import 'account_form.dart';
 
-
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
       child: SizedBox(
         width: double.infinity,
         child: Padding(
@@ -31,9 +29,7 @@ class Body extends StatelessWidget {
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                  ],
+                  children: [],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 Text(

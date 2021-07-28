@@ -49,8 +49,10 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-      Hero(tag:widget.product.id,
-        child:   ProductImages(product: widget.product),),
+        Hero(
+          tag: widget.product.id,
+          child: ProductImages(product: widget.product),
+        ),
         Container(
           padding: EdgeInsets.only(
               top: getProportionateScreenWidth(10),
@@ -85,7 +87,7 @@ class _BodyState extends State<Body> {
                       //     topRight: Radius.circular(40),
                       ),
                 ),
-                child:Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundedIconBtn(
@@ -124,9 +126,7 @@ class _BodyState extends State<Body> {
                         });
                         if (!flag) {
                           demoCarts.add(
-                            Cart(
-                                product: widget.product,
-                                numOfItem: count),
+                            Cart(product: widget.product, numOfItem: count),
                           );
                         }
                         if (count == 0)
@@ -136,10 +136,8 @@ class _BodyState extends State<Body> {
                               demoCarts.remove(element);
                             }
                           });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(
-                                    ' تم اضافة المنتج الي العربة ')));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(' تم اضافة المنتج الي العربة ')));
                       },
                     )
                   ],

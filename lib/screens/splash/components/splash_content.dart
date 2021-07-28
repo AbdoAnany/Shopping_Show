@@ -14,14 +14,15 @@ class SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-
       children: <Widget>[
-        SizedBox(height: getProportionateScreenHeight(30),),
+        SizedBox(
+          height: getProportionateScreenHeight(30),
+        ),
         Text(
           'مرحبا بكم في عروض التسوق \n نقدم لكم افضل العروض والامنتجات \n ',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: getProportionateScreenHeight(25),
-
+          style: TextStyle(
+              fontSize: getProportionateScreenHeight(25),
               fontWeight: FontWeight.bold),
         ),
         Image.asset(

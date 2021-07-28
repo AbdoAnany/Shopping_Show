@@ -9,10 +9,12 @@ class BillHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:   Text(
-        "قائمة الفواتير",textDirection: TextDirection.rtl,
-
-      ),),
+      appBar: AppBar(
+        title: Text(
+          "قائمة الفواتير",
+          textDirection: TextDirection.rtl,
+        ),
+      ),
       body: Body(),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
     );

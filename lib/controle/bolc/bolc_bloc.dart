@@ -10,8 +10,7 @@ part 'bolc_state.dart';
 class TestBloc extends Bloc<TestEvent, TestState> {
   TestBloc() : super(InitialTestState());
 
-
-  static TestBloc get(context)=>BlocProvider.of(context);
+  static TestBloc get(context) => BlocProvider.of(context);
   @override
   Stream<TestState> mapEventToState(TestEvent event) async* {
     // TODO: Add your event logic

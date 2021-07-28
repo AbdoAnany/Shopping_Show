@@ -10,11 +10,9 @@ import '../constants.dart';
 import 'package:panda1/controle/auth_provider.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-
-
   InterstitialAd _interstitialAd;
 
-   CustomBottomNavBar({
+  CustomBottomNavBar({
     Key key,
     this.selectedMenu,
   }) : super(key: key);
@@ -57,59 +55,56 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu
+                  icon: SvgPicture.asset(
+                    "assets/icons/Shop Icon.svg",
+                    color: MenuState.home == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    //   _interstitialAd.show();
+                    Navigator.pushReplacementNamed(
+                        context, HomeScreen.routeName);
+                  }),
+              IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/Heart Icon.svg",
+                    color: MenuState.favourite == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    try {
+                      _interstitialAd.show();
+                      Navigator.pushNamed(context, FavouriteScreen.routeName);
+                    } catch (e) {
+                      Navigator.pushNamed(context, FavouriteScreen.routeName);
+                    }
+                  }),
+              IconButton(
+                  icon: Icon(Icons.category),
+                  color: MenuState.message == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
-                ),
-                onPressed: () {
-               //   _interstitialAd.show();
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-                }
-
-              ),
+                  onPressed: () {
+                    //    _interstitialAd.show();
+                    Navigator.pushNamed(context, SearchScreen.routeName);
+                  }),
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Heart Icon.svg",
-                  color: MenuState.favourite == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () {
-                  try{
-                    _interstitialAd.show();
-                    Navigator.pushNamed(context, FavouriteScreen.routeName);
-                  }catch(e){
-                    Navigator.pushNamed(context, FavouriteScreen.routeName);
-                  }
-                }
-              ),
-              IconButton(
-                icon: Icon(Icons.category),
-                color: MenuState.message == selectedMenu
-                    ? kPrimaryColor
-                    : inActiveIconColor,
-                onPressed: () {
-              //    _interstitialAd.show();
-                    Navigator.pushNamed(context, SearchScreen.routeName);}
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.history_edu,
-                  color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () {
-                  try{
-                    _interstitialAd.show();
-                    Navigator.pushNamed(context, BillHistoryScreen.routeName);
-                  }catch(e){
-                    Navigator.pushNamed(context, BillHistoryScreen.routeName);
-                  }
-                }
-              ),
+                  icon: Icon(
+                    Icons.history_edu,
+                    color: MenuState.profile == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    try {
+                      _interstitialAd.show();
+                      Navigator.pushNamed(context, BillHistoryScreen.routeName);
+                    } catch (e) {
+                      Navigator.pushNamed(context, BillHistoryScreen.routeName);
+                    }
+                  }),
             ],
           )),
     );

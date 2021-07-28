@@ -28,8 +28,8 @@ class _BodyState extends State<Body> {
     return Consumer(
       builder: (BuildContext context, watch, _) {
         final ref = watch(pro);
-        try{
-          return  FutureBuilder(
+        try {
+          return FutureBuilder(
               future: FirebaseFirestore.instance
                   .collection('bills')
                   .doc(ref.user.uid)
@@ -37,7 +37,6 @@ class _BodyState extends State<Body> {
                   .get(),
               builder: (context, snapshot) {
                 switch (snapshot.connectionState) {
-
                   case ConnectionState.none:
                     return Center(
                       child: Text(
@@ -59,7 +58,6 @@ class _BodyState extends State<Body> {
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         itemBuilder: (context, index) {
-
                           return FadeAnimation(
                             delay: 2 + index / 5,
                             fadeDirection: FadeDirection.left,
@@ -99,20 +97,18 @@ class _BodyState extends State<Body> {
                   ),
                 );
               });
-        }catch(e){
-          return Center(child:  MaterialButton(
-            elevation: 5,
-            child: Text('يجب تسجيل اولا'),
-            onPressed: (){
-              Navigator.pushNamed(context, SignInScreen.routeName);
-            },
-          ),
+        } catch (e) {
+          return Center(
+            child: MaterialButton(
+              elevation: 5,
+              child: Text('يجب تسجيل اولا'),
+              onPressed: () {
+                Navigator.pushNamed(context, SignInScreen.routeName);
+              },
+            ),
           );
         }
-
-
       },
     );
   }
-
 }

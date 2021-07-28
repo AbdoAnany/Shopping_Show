@@ -67,8 +67,7 @@ class _BodyState extends State<Body> {
                     onPressed: () {
                       Navigator.pushNamed(context, DetailsScreen.routeName,
                           arguments: ProductDetailsArguments(
-                              product:
-                              Product.fromMap(snapshot.data[index])));
+                              product: Product.fromMap(snapshot.data[index])));
                     },
                     child: Row(
                       children: [
@@ -84,17 +83,14 @@ class _BodyState extends State<Body> {
                                   blurRadius: 2,
                                   offset: Offset(2, 4)),
                               BoxShadow(
-                                  color: Colors.white,
-                                  offset: Offset(0, 0)),
+                                  color: Colors.white, offset: Offset(0, 0)),
                             ],
                           ),
                           child: Image.network(
                             snapshot.data[index]['image'],
                             fit: BoxFit.fill,
-                            frameBuilder: (BuildContext context,
-                                Widget child,
-                                int frame,
-                                bool wasSynchronouslyLoaded) {
+                            frameBuilder: (BuildContext context, Widget child,
+                                int frame, bool wasSynchronouslyLoaded) {
                               if (wasSynchronouslyLoaded) return child;
                               return AnimatedOpacity(
                                 opacity: frame == null ? 0 : 1,
@@ -103,19 +99,15 @@ class _BodyState extends State<Body> {
                                 child: child,
                               );
                             },
-                            loadingBuilder: (BuildContext context,
-                                Widget child,
+                            loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent loadingProgress) {
                               if (loadingProgress == null) return child;
                               return Center(
                                 child: CircularProgressIndicator(
-                                  value: loadingProgress
-                                      .expectedTotalBytes !=
-                                      null
-                                      ? loadingProgress
-                                      .cumulativeBytesLoaded /
-                                      loadingProgress
-                                          .expectedTotalBytes
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes
                                       : null,
                                 ),
                               );
@@ -129,29 +121,29 @@ class _BodyState extends State<Body> {
                         SizedBox(width: 20),
                         Flexible(
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  snapshot.data[index]['title'],
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 16),
-                                  maxLines: 2,
-                                  softWrap: true,
-                                  textAlign: TextAlign.justify,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                SizedBox(height: 10),
-                                Text.rich(
-                                  TextSpan(
-                                    text: "${snapshot.data[index]['price']}  EGP",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                        color: kPrimaryColor),
-                                  ),
-                                )
-                              ],
-                            )),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              snapshot.data[index]['title'],
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 16),
+                              maxLines: 2,
+                              softWrap: true,
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 10),
+                            Text.rich(
+                              TextSpan(
+                                text: "${snapshot.data[index]['price']}  EGP",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                    color: kPrimaryColor),
+                              ),
+                            )
+                          ],
+                        )),
                       ],
                     ),
                   ),
@@ -163,5 +155,4 @@ class _BodyState extends State<Body> {
       },
     );
   }
-
 }

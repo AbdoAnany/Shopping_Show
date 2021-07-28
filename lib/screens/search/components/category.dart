@@ -14,9 +14,10 @@ class Category extends StatefulWidget {
   @override
   _CategoryState createState() => _CategoryState();
 }
+
 class _CategoryState extends State<Category> {
   String searchBy = 'الاكثر شيوعا';
-  final scaffoldKey=GlobalKey<ScaffoldState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   BannerAd _bannerAd2;
   void showBannerAd() {
     super.didChangeDependencies();
@@ -40,10 +41,12 @@ class _CategoryState extends State<Category> {
         ))
       ..load();
   }
+
   Future<void> categoryLists() async {
     var c = await FirebaseFirestore.instance.collection('category').get();
     popItem = c.docs[0]['category'];
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -51,40 +54,42 @@ class _CategoryState extends State<Category> {
     categoryLists();
     showBannerAd();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _bannerAd2.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title:     Container(
+        title: Container(
             child: _bannerAd2 != null
                 ? Container(
-                height: 50,
-                child: AdWidget(
-                  ad: _bannerAd2,
-                ))
+                    height: 50,
+                    child: AdWidget(
+                      ad: _bannerAd2,
+                    ))
                 : Text(
-              'Shopping Show  عروض التسوق ',
-              style: TextStyle(color: Colors.red, fontSize: 16),
-            )),
+                    'Shopping Show  عروض التسوق ',
+                    style: TextStyle(color: Colors.red, fontSize: 16),
+                  )),
       ),
       body: ListView(
         children: [
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             height: SizeConfig.screenHeight,
             padding: EdgeInsets.only(bottom: getProportionateScreenHeight(200)),
             child: FutureBuilder(
                 future: FirebaseFirestore.instance.collection('category').get(),
-
                 builder: (context, snapshot) {
-                  
                   print(snapshot.data.docs[0]['category'].length);
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
@@ -105,29 +110,34 @@ class _CategoryState extends State<Category> {
                     case ConnectionState.active:
                     case ConnectionState.done:
                       return GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                              mainAxisExtent: 100,
-                         //     childAspectRatio: 1.2
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            mainAxisExtent: 100,
+                            //     childAspectRatio: 1.2
                           ),
-                          itemCount:  snapshot.data.docs[0]['category'].length,
+                          itemCount: snapshot.data.docs[0]['category'].length,
                           physics: BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-
                             return FadeAnimation(
                               delay: 2 + index / 5,
                               fadeDirection: FadeDirection.left,
                               child: // (snapshot.data.docs[index].data()['category'] == '${searchBy.toString()}')?
-                              SpecialOfferCard(
+                                  SpecialOfferCard(
                                 image: "assets/images/lo.png",
-                                category:  popItem[index],numOfBrands: 0,
+                                category: popItem[index],
+                                numOfBrands: 0,
                                 press: () {
-                                  scaffoldKey.currentState.showBottomSheet((context) => Body(searchBy:popItem[index] ,));
+                                  scaffoldKey.currentState
+                                      .showBottomSheet((context) => Body(
+                                            searchBy: popItem[index],
+                                          ));
                                 },
-                              ),)
-                            //:SizedBox(),
+                              ),
+                            )
+                                //:SizedBox(),
                                 ;
                           });
                       break;
@@ -144,5 +154,4 @@ class _CategoryState extends State<Category> {
       ),
     );
   }
-
 }

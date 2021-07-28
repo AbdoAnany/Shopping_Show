@@ -106,13 +106,12 @@ class _SignFormState extends State<SignForm> {
           }),
           SizedBox(height: getProportionateScreenHeight(20)),
           MaterialButton(
-          elevation: 5,
-            child: Text( "زيارة بدون تسجيل"),
+            elevation: 5,
+            child: Text("زيارة بدون تسجيل"),
             onPressed: () async {
               KeyboardUtil.hideKeyboard(context);
-              userid=null;
+              userid = null;
               Navigator.pushNamed(context, HomeScreen.routeName);
-
             },
           )
         ],

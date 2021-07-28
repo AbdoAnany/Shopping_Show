@@ -70,7 +70,6 @@ class _DataFormState extends State<DataForm> {
                             name, phone, email, password, address);
                         if (flag == 'success') {
                           Navigator.pushNamed(context, HomeScreen.routeName);
-
                         } else if (flag ==
                             'The email address is already in use by another account.') {
                           addError(error: 'هذا الايميل مستخدم بالفعل');
@@ -86,22 +85,20 @@ class _DataFormState extends State<DataForm> {
 
   TextFormField buildAddressFormField() {
     return TextFormField(
-
       onSaved: (newValue) => address = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: 'ادخل العنوان');
         } else if (value.length >= 8) {
-          removeError(error:  'ادخل العنوان');
+          removeError(error: 'ادخل العنوان');
         }
         address = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error:  'ادخل العنوان');
+          addError(error: 'ادخل العنوان');
           return "";
         }
-
 
         return null;
       },
@@ -109,11 +106,11 @@ class _DataFormState extends State<DataForm> {
         labelText: "العنوان",
         hintText: "أدخل العنوان",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+        suffixIcon:
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
-
 
   TextFormField buildNameFormField() {
     return TextFormField(
@@ -150,13 +147,12 @@ class _DataFormState extends State<DataForm> {
         if (value.isEmpty) {
           addError(error: 'رقم الهاتف فارغ');
           return "";
-        }
-        else if (value.length<8) {
+        } else if (value.length < 8) {
           addError(error: 'رقم الهاتف غير صحيح');
         }
         if (value.isNotEmpty) {
           removeError(error: 'رقم الهاتف فارغ');
-        } else if (value.length>=8) {
+        } else if (value.length >= 8) {
           removeError(error: 'رقم الهاتف غير صحيح');
         }
         return null;

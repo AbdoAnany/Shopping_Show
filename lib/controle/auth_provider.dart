@@ -17,13 +17,13 @@ import 'package:panda1/screens/sign_in/sign_in_screen.dart';
 enum MenuState { home, favourite, message, profile }
 enum AuthStates { unAuthentication, Authenticating, Authenticated }
 var userid;
-var type='customer';
+var type = 'customer';
 
 String billID;
 List popItem = [
   'الاكثر شيوعا', 'قسم كاشات', 'قسم أطفالي', 'قسم داخلي حريمي', 'قسم لانجري',
   ' أسدالات', 'قسم عبايات حريمي', 'قسم التركي', 'قسم الترنجات الحريمي',
-  'قسم الترنجات الرجالي', 'قسم ترنجات بنات',  'ملابس', 'أكسسوارات'
+  'قسم الترنجات الرجالي', 'قسم ترنجات بنات', 'ملابس', 'أكسسوارات'
 //  'أغذية و مشروبات',
   //'لحوم و دواجن',داخلي
   // 'أسماك',
@@ -52,7 +52,7 @@ class AuthProvider with ChangeNotifier {
   FirebaseAuth _instance;
   User _user;
 
-  var bill, bill1 = [], save1 = [],users;
+  var bill, bill1 = [], save1 = [], users;
   User get user => _user;
   AuthStates get authStates => _authStates;
   AuthProvider() {
@@ -74,8 +74,8 @@ class AuthProvider with ChangeNotifier {
         Navigator.pushReplacementNamed(context, SignInScreen.routeName);
       } else {
         _user = user;
-        userid =_user.uid;
-       notifyListeners();
+        userid = _user.uid;
+        notifyListeners();
         Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       }
     });
@@ -83,16 +83,17 @@ class AuthProvider with ChangeNotifier {
 
   //---------------Notifications with Firebase---------------------------
   usertype(context) async {
-
-    if(userid!=null)
-    {
-      var c= await FirebaseFirestore.instance.collection('users').doc(userid).get();
+    if (userid != null) {
+      var c = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userid)
+          .get();
       type = await c.data()['type'];
-      if( type=='admin' )
+      if (type == 'admin')
         Navigator.pushNamed(context, AddProductScreen.routeName);
     }
-
   }
+
   Future notifications() async {
     if (Platform.isIOS)
       _fbm.requestNotificationPermissions(IosNotificationSettings());
@@ -117,8 +118,11 @@ class AuthProvider with ChangeNotifier {
       UserCredential userCredential = await _instance
           .signInWithEmailAndPassword(email: email, password: password);
       _user = userCredential.user;
-      users=   await FirebaseFirestore.instance.collection('users').doc(_user.uid).get();
-      userid =_user.uid;
+      users = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_user.uid)
+          .get();
+      userid = _user.uid;
 
       _authStates = AuthStates.Authenticated;
       notifyListeners();
@@ -129,13 +133,14 @@ class AuthProvider with ChangeNotifier {
       return e.message;
     }
   }
+
   //---------------SignIn with google account---------------------------
   void googleSignIn() async {
     try {
       final GoogleSignInAccount signInAccount = await _googleSignIn.signIn();
       notifyListeners();
       GoogleSignInAuthentication signInAuthentication =
-      await signInAccount.authentication;
+          await signInAccount.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
           idToken: signInAuthentication.idToken,
           accessToken: signInAuthentication.accessToken);
@@ -146,13 +151,14 @@ class AuthProvider with ChangeNotifier {
         "phone": 'phone',
         "type": 'Customer',
       });
-      userid =_user.uid;
+      userid = _user.uid;
       //   users=   await FirebaseFirestore.instance.collection('users').doc(_user.uid).get();
       notifyListeners();
     } catch (error) {
       notifyListeners();
     }
   }
+
   //---------------Registration---------------------------
   Future<String> register(
       String name, String phone, String email, String password) async {
@@ -197,8 +203,6 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-
-
   //---------------logOut with google account or email---------------------------
   logOut(context) async {
     if (await _googleSignIn.isSignedIn()) {
@@ -215,9 +219,8 @@ class AuthProvider with ChangeNotifier {
     return;
   }
 
-
   //---------------Add Bill in Firebase---------------------------
-  Future<String> addBill(List<Cart> bill,address, total) async {
+  Future<String> addBill(List<Cart> bill, address, total) async {
     bill1.clear();
     bill.forEach((element) {
       bill1.add({
@@ -242,7 +245,7 @@ class AuthProvider with ChangeNotifier {
         'total': double.parse((total.toStringAsFixed(2))),
         'date': dateTime.format(DateTimeFormats.american),
         'len': bill1.length,
-        'address':address,
+        'address': address,
         'state': 'مسودة'
       });
       notifyListeners();
@@ -252,6 +255,7 @@ class AuthProvider with ChangeNotifier {
       return e.message;
     }
   }
+
   Future<String> deleteBill(docId) async {
     try {
       await FirebaseFirestore.instance
@@ -267,7 +271,6 @@ class AuthProvider with ChangeNotifier {
       return e.message;
     }
   }
-
 
   Future<String> addProduct(Product product) async {
     notifyListeners();
@@ -298,6 +301,7 @@ class AuthProvider with ChangeNotifier {
       return e.message;
     }
   }
+
   Future<String> deleteProduct(docId, id) async {
     try {
       print(id);
@@ -314,7 +318,6 @@ class AuthProvider with ChangeNotifier {
       return e.message;
     }
   }
-
 
 //---------------get All Exam from Firebase---------------------------
   Future<String> uploadImageToFirebase(
@@ -333,6 +336,7 @@ class AuthProvider with ChangeNotifier {
       print(e.message);
     }
   }
+
   Future<String> addPathToDatabase(String text) async {
     try {
       // Get image URL from firebase
@@ -353,6 +357,7 @@ class AuthProvider with ChangeNotifier {
       });
     }
   }
+
   Future showAlert(String error, myContext) async {
     return showModalBottomSheet(
         backgroundColor: Colors.transparent,
@@ -385,5 +390,4 @@ class AuthProvider with ChangeNotifier {
           );
         });
   }
-
 }

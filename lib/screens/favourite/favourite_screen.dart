@@ -10,10 +10,11 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:   Text(
-        "قائمة المفضلات",textDirection: TextDirection.rtl,
-
-      ),),
+        title: Text(
+          "قائمة المفضلات",
+          textDirection: TextDirection.rtl,
+        ),
+      ),
       body: Body(),
       bottomNavigationBar:
           CustomBottomNavBar(selectedMenu: MenuState.favourite),

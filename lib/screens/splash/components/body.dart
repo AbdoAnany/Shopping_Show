@@ -25,13 +25,10 @@ class _BodyState extends State<Body> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
-
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
@@ -40,11 +37,8 @@ class _BodyState extends State<Body> {
             Expanded(
               flex: 5,
               child: PageView.builder(
-
                 onPageChanged: (value) {
-                  setState(() {
-
-                  });
+                  setState(() {});
                 },
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
@@ -69,9 +63,9 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(flex: 3),
                     DefaultButton(
-                     press: (){
-                       AuthProvider().checkSignIn(context);
-                     },
+                      press: () {
+                        AuthProvider().checkSignIn(context);
+                      },
                       text: 'دخول',
                     ),
                     Spacer(),

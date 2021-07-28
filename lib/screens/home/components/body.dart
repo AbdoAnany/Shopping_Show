@@ -48,7 +48,6 @@ class _BodyState extends State<Body> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
           Container(
             alignment: Alignment.center,
             height: 200,
@@ -56,29 +55,30 @@ class _BodyState extends State<Body> {
             // alignment: Alignment.centerRight,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    'assets/images/lo.png',
-                  ),
-                )),
+              fit: BoxFit.fill,
+              image: AssetImage(
+                'assets/images/lo.png',
+              ),
+            )),
             child: Column(
               children: [
                 Container(
-
                   height: 50,
                   child: _bannerAd != null
                       ? AdWidget(
-                    ad: _bannerAd,
-                  )
+                          ad: _bannerAd,
+                        )
                       : Text(
-                    'Shopping Show  عروض التسوق ',
-                    style: TextStyle(color: Colors.red, fontSize: 18),
-                  ),
+                          'Shopping Show  عروض التسوق ',
+                          style: TextStyle(color: Colors.red, fontSize: 18),
+                        ),
                 ),
-                DiscountBanner()],
+                DiscountBanner()
+              ],
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(10)), //   SpecialOffers(),
+          SizedBox(
+              height: getProportionateScreenHeight(10)), //   SpecialOffers(),
           PopularProducts(),
           SizedBox(height: getProportionateScreenWidth(20)),
         ],

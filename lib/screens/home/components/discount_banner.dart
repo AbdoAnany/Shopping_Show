@@ -14,7 +14,7 @@ class DiscountBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+        alignment: Alignment.center,
         child: FutureBuilder(
             future: FirebaseFirestore.instance.collection('offers').get(),
             builder: (context, snapshot) {

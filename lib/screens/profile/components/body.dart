@@ -11,30 +11,26 @@ import 'profile_pic.dart';
 class Body extends ConsumerWidget {
   var pro = ChangeNotifierProvider((ref) => AuthProvider());
 
-
   @override
   Widget build(BuildContext context, watch) {
     final ref = watch(pro);
     return SingleChildScrollView(
-
       child: Column(
         children: [
-        Container(height: 200,
-          child:   Image.asset("assets/images/logo.png"),),
-
+          Container(
+            height: 200,
+            child: Image.asset("assets/images/logo.png"),
+          ),
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {
-              Navigator.pushNamed(context, AccountScreen.routeName)
-            },
+            press: () =>
+                {Navigator.pushNamed(context, AccountScreen.routeName)},
           ),
           ProfileMenu(
             text: "Notifications",
             icon: "assets/icons/Bell.svg",
-            press: () {
-
-             },
+            press: () {},
           ),
           ProfileMenu(
             text: "Settings",

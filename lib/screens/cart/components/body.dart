@@ -40,6 +40,7 @@ class _BodyState extends State<Body> {
           },
         ));
   }
+
   void dispose() {
     // TODO: implement dispose
     super.dispose();
@@ -52,7 +53,6 @@ class _BodyState extends State<Body> {
   }
 
   @override
-
   @override
   Widget build(BuildContext context) {
     total = 0;
@@ -157,12 +157,9 @@ class _BodyState extends State<Body> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               )),
-                          onSelected: (value) =>
-                              setState(() {
-
-                                address = value;
-
-                              }),
+                          onSelected: (value) => setState(() {
+                            address = value;
+                          }),
                           itemBuilder: (context) => [
                             ...List.generate(
                                 addressList.length,
@@ -185,7 +182,7 @@ class _BodyState extends State<Body> {
                           children: [
                             TextSpan(
                               text:
-                                  "${double.parse((total.toStringAsFixed(2))) } EPG",
+                                  "${double.parse((total.toStringAsFixed(2)))} EPG",
                               style:
                                   TextStyle(fontSize: 16, color: Colors.black),
                             ),
@@ -198,35 +195,39 @@ class _BodyState extends State<Body> {
                           builder: (BuildContext context, watch, _) {
                             final ref = watch(pro);
                             return DefaultButton(
-                              text: "أرسال طلب",
-                              press: () async {
-
-                                if(userid==null)
-                                  {
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
-                                      content: MaterialButton(
-                                        elevation: 5,
-                                        child: Text('يجب تسجيل اولا',style: TextStyle(color: Colors.white),),
-                                        onPressed: (){
-                                          Navigator.pushNamed(context, SignInScreen.routeName);
-                                        },
+                                text: "أرسال طلب",
+                                press: () async {
+                                  if (userid == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: MaterialButton(
+                                          elevation: 5,
+                                          child: Text(
+                                            'يجب تسجيل اولا',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pushNamed(context,
+                                                SignInScreen.routeName);
+                                          },
+                                        ),
                                       ),
-                                    ),);
+                                    );
                                     return;
                                   }
-                                if( await ref.addBill(demoCarts,address, total)=='success')
-                                  {
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                  content: Text('تم ارسال الطلب'),
-                                  ));
-                                  demoCarts.clear();
-                                  _interstitialAd.show();
+                                  if (await ref.addBill(
+                                          demoCarts, address, total) ==
+                                      'success') {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text('تم ارسال الطلب'),
+                                    ));
+                                    demoCarts.clear();
+                                    _interstitialAd.show();
                                   }
                                 });
-                              },
-
+                          },
                         ),
                       ),
                     ],
@@ -239,6 +240,7 @@ class _BodyState extends State<Body> {
       ),
     );
   }
+
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       title: Column(
@@ -249,12 +251,13 @@ class _BodyState extends State<Body> {
           ),
           Text(
             "${demoCarts.length} منتج ",
-            style: TextStyle(color: Colors.white,fontSize: 16),
+            style: TextStyle(color: Colors.white, fontSize: 16),
           ),
         ],
       ),
     );
   }
+
   PopupMenuItem<String> myPopupMenuItem(key, value) {
     return PopupMenuItem<String>(
       value: '$key = $value EGP',

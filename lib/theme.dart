@@ -3,11 +3,9 @@ import 'package:panda1/constants.dart';
 
 ThemeData theme() {
   return ThemeData(
-
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.red,
     accentColor: Colors.red,
-
     snackBarTheme: SnackBarThemeData(
         actionTextColor: Colors.white, backgroundColor: Color(0xffe90909)),
     fontFamily: "Muli",
@@ -47,12 +45,11 @@ TextTheme textTheme() {
 AppBarTheme appBarTheme() {
   return AppBarTheme(
     color: kPrimaryColor,
-    elevation: 5,centerTitle: true,shadowColor: Colors.black,
-
-
+    elevation: 5,
+    centerTitle: true,
+    shadowColor: Colors.black,
     brightness: Brightness.light,
-    titleTextStyle: TextStyle(color: Colors.white, fontSize: 20) ,
-
+    titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
     iconTheme: IconThemeData(color: Colors.white),
     textTheme: TextTheme(
       headline6: TextStyle(color: Colors.white, fontSize: 20),

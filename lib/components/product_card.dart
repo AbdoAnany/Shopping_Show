@@ -27,7 +27,8 @@ class ProductCard extends StatelessWidget {
     return Container(
         width: width,
         height: getProportionateScreenHeight(250),
-        padding: EdgeInsets.symmetric(horizontal:getProportionateScreenWidth(10)),
+        padding:
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
         child: GestureDetector(
           onTap: () => Navigator.pushNamed(
             context,
@@ -38,9 +39,14 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-          type =='admin'   ?Expanded(child: IconButton(onPressed: (){
-            AuthProvider().deleteProduct(product.category,id);
-          }, icon: Icon(Icons.clear))):SizedBox(),
+              type == 'admin'
+                  ? Expanded(
+                      child: IconButton(
+                          onPressed: () {
+                            AuthProvider().deleteProduct(product.category, id);
+                          },
+                          icon: Icon(Icons.clear)))
+                  : SizedBox(),
               Expanded(
                   flex: 5,
                   child: Container(
@@ -94,7 +100,7 @@ class ProductCard extends StatelessWidget {
                     ),
                   )),
               Expanded(
-                   flex: 1,
+                flex: 1,
                 child: Text(
                   product.title,
                   textDirection: TextDirection.rtl,
@@ -120,17 +126,21 @@ class ProductCard extends StatelessWidget {
                                 color: kPrimaryColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700)),
-                        product.priceBefore != null?   TextSpan(
-                            text: '\n${product.priceBefore.toStringAsFixed(2)}  EGP',
-                          style: TextStyle(
-                            decoration: TextDecoration.combine([
-                              TextDecoration.lineThrough,
-                              TextDecoration.lineThrough
-                            ]),
-                            fontSize: getProportionateScreenWidth(15),
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54,
-                          ),):  TextSpan(text: ''),
+                        product.priceBefore != null
+                            ? TextSpan(
+                                text:
+                                    '\n${product.priceBefore.toStringAsFixed(2)}  EGP',
+                                style: TextStyle(
+                                  decoration: TextDecoration.combine([
+                                    TextDecoration.lineThrough,
+                                    TextDecoration.lineThrough
+                                  ]),
+                                  fontSize: getProportionateScreenWidth(15),
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black54,
+                                ),
+                              )
+                            : TextSpan(text: ''),
                       ],
                     ),
                   )),

@@ -65,54 +65,51 @@ class SpecialOfferCard extends StatelessWidget {
     return Container(
       width: getProportionateScreenWidth(200),
       height: getProportionateScreenHeight(120),
-      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
+      padding:
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
       child: GestureDetector(
-        onTap: press,
-        child:ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-
-          child: Stack(
-            children: [
-              // Image.asset(
-              //   image,
-              //   fit: BoxFit.cover,
-              // ),
-              Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.black,
-                      kPrimaryColor.withOpacity(0.8),
-                      kPrimaryColor.withOpacity(0.8),
-                    Colors.black,
-
-                    ],
-                  ),
-                ),child:    Text.rich(
-
-                TextSpan(
-                  style: TextStyle(color: Colors.white),
-                  children: [
-                    TextSpan(
-                      text: "$category\n",
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(18),
-                        fontWeight: FontWeight.bold,
-                      ),
+          onTap: press,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Stack(
+              children: [
+                // Image.asset(
+                //   image,
+                //   fit: BoxFit.cover,
+                // ),
+                Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Colors.black,
+                        kPrimaryColor.withOpacity(0.8),
+                        kPrimaryColor.withOpacity(0.8),
+                        Colors.black,
+                      ],
                     ),
-
-                  ],
-                ),textAlign: TextAlign.center,
-              ),
-              ),
-
-            ],
-          ),
-        )
-      ),
+                  ),
+                  child: Text.rich(
+                    TextSpan(
+                      style: TextStyle(color: Colors.white),
+                      children: [
+                        TextSpan(
+                          text: "$category\n",
+                          style: TextStyle(
+                            fontSize: getProportionateScreenWidth(18),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

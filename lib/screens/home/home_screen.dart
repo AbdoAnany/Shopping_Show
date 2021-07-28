@@ -38,12 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
             TextSpan(
                 text: 'عروض  التسوق\n ',
                 style: TextStyle(
-                  fontSize: getProportionateScreenWidth(20),fontWeight: FontWeight.bold
-                )),
+                    fontSize: getProportionateScreenWidth(20),
+                    fontWeight: FontWeight.bold)),
             TextSpan(
                 text: 'Shopping Show\n',
                 style: TextStyle(
-                    fontSize: getProportionateScreenWidth(15),fontWeight: FontWeight.bold,
+                    fontSize: getProportionateScreenWidth(15),
+                    fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     letterSpacing: getProportionateScreenWidth(7)))
           ]),
@@ -58,12 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: CustomDrawer(),
       body: Body(),
-      floatingActionButton: type=='admin'?FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){
-        if( type=='admin' )
-          Navigator.pushNamed(context, AddProductScreen.routeName);
-      },):SizedBox(),
+      floatingActionButton: type == 'admin'
+          ? FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                if (type == 'admin')
+                  Navigator.pushNamed(context, AddProductScreen.routeName);
+              },
+            )
+          : SizedBox(),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     ));
   }

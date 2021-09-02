@@ -2,7 +2,7 @@
 This is Flutter project e-commerce .
 
 ## Getting Started
-
+This project is a starting point for a Flutter application. This project Contains SplashScreen and after that, you can Sign In by account or Google account, and if you do have not an account you can create it! when you sign in you will go to homePage to view a list of Popular Products you can see four buttons in the navigation bar Home  Favorite Category & bills so in Favorite Screen you can see the product you saved and in the category screen, you can see a lot of category product so if you click in any product you can see a lot of details and if you want it to click in add to cart and if you go to cart you will show every product you added and the total price and you can delete or send the order and bill will and in bills screen.
 
 ## Packages Used
 ```
